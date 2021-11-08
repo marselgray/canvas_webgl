@@ -1,0 +1,23 @@
+{
+  "name": "canvas_webgl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marselgray/canvas_webgl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marselgray/canvas_webgl/issues"
+  },
+  "homepage": "https://github.com/marselgray/canvas_webgl#readme",
+  "dependencies": {
+    "canvas-sketch": "^0.7.4"
+  }
+}
