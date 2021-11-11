@@ -18,11 +18,14 @@ const sketch = () => {
 
     for(let x = 0; x < count; x++){
       for(let y = 0; y < count; y++) {
+
         const u = x / (count - 1);
         const v = y / (count - 1);
+        const radius = Math.abs(random.noise2D(u, v)) * 0.025;
+
         points.push({
           color: random.pick(palette),
-          radius: Math.abs(random.gaussian() * 0.01),
+          radius,
           position: [u, v]
         });
       }
@@ -30,7 +33,6 @@ const sketch = () => {
     return points;
   };
 
-  random.setSeed(1);
   const points = createGrid().filter(() => random.value() > 0.5);
   const margin = 100;
 
