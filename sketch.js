@@ -21,12 +21,13 @@ const sketch = () => {
 
         const u = x / (count - 1);
         const v = y / (count - 1);
-        const radius = Math.abs(random.noise2D(u, v)) * 0.025;
+        const radius = Math.abs(random.noise2D(u, v)) * 0.1;
 
         points.push({
           color: random.pick(palette),
           radius,
-          position: [u, v]
+          rotation: random.noise2D(u, v),
+          position: [u, v]          
         });
       }
     }
@@ -45,19 +46,29 @@ const sketch = () => {
       const {
         position,
         radius,
-        color
+        color,
+        rotation
       } = data;
 
       const [ u, v] = position;
       const x = lerp(margin, width - margin, u);
       const y = lerp(margin, height - margin, v);
 
-      context.beginPath();
-      context.arc(x, y, radius * width, 0, Math.PI * 2, false);
-      context.strokeStyle = 'black';
-      context.lineWidth = 40;
+      // context.beginPath();
+      // context.arc(x, y, radius * width, 0, Math.PI * 2, false);
+      // context.strokeStyle = 'black';
+      // context.lineWidth = 40;
+      // context.fillStyle = color;
+      // context.fill();
+
+      context.save();
       context.fillStyle = color;
-      context.fill();
+      context.font = `${radius * width}px "Arial"`;
+      context.translate(x, y);
+      context.rotate(rotation);
+      context.fillText('A', x, y);
+
+      context.restore();
     })
   };
 };
